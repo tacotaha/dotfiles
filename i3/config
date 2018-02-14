@@ -193,3 +193,6 @@ bindsym Print exec scrot -u /home/taha/Pictures/Screenshots/%Y%m%d_%H%M%S.png
 
 # Print screen entire view
 bindsym $mod+Print exec scrot /home/taha/Pictures/Screenshots/%Y%m%d_%Ho%M%S.png
+
+# Low Battery status notifier
+exec --no-startup-id i3-battery-popup
