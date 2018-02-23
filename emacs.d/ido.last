@@ -1,0 +1,42 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/taha/.config/" . "i3/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/taha/.config/i3/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ 
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/taha/School/spring2018/CompIV/PS3/ps3a/" (23182 13536 66437 765000) "../" "venus.gif" "ps3a-readme.txt" "main.cpp" "earth.gif" "screenshot.png" "planets.txt" "Body.cpp" "./" "mars.gif" "Body.hpp" "mercury.gif" "sun.gif" "Makefile~" "Makefile")
+
+ ("/home/taha/School/spring2018/CompIV/PS3/" (23181 42764 475898 626000) "../" "main.o" "its_a_trap.gif" "venus.gif" "asteroid.gif" "rebel_cruiser.gif" "jupiter.gif" "neptune.gif" "nbody.zip" "acorn3.gif" "NBody" "main.cpp" "star_destroyer.gif" "blackhole.gif" "earth.gif" "planets.txt" "death_star.gif" "Body.cpp~" "Body.cpp" "body.o" "saturn.gif" "ball.gif" "squirrel.gif" "./" "mars.gif" "imback.gif" "goodbye.gif" "Body.hpp" "kevin.gif" "pin.gif" "mercury.gif" "endor.gif" "sun.gif" "comet.gif" "acorn-1.gif" "uranus.gif" "Makefile" "pluto.gif" "star.gif" "ninjasquirrel_red.gif" "nbody/" "main.cpp~")
+
+ ("/home/taha/Developer/EChat/" (23177 51360 911113 660000) "../" "Server.c" "./" "Server3.c" ".#Server.c" "Client.c" "Makefile" "Server.c~")
+
+ ("/home/taha/.emacs.d/" (23177 41117 17262 262000) ".#init.el" "init.el~" "../" "recentf" "ido.last~" "snippets/" "recentf~" "network-security.data" "./" "ido.last" "themes/" "ac-comphist.dat" "auto-save-list/" "init.el" "elpa/" "%backup%~")
+
+ ("/home/taha/" (23174 57942 529783 737000) ".bash_logout" ".pki/" "../" ".fehbg" ".screenlayout/" ".i3-battery-popup.lock" ".vmware/" "ISO/" ".gphoto/" "Developer/" ".gitconfig" "Videos/" ".bash_history" ".saves/" ".bashrc" ".tar.gpg" ".pulse-cookie" "VirtualBox VMs/" ".steampath" ".cache/" ".gconf/" ".xsession-errors.old" ".atom/" ".gnupg/" "Steam/" ".xsession-errors" ".gimp-2.8/" ".steam/" "Downloads/" ".local/" ".profile" ".ssh/" ".mozilla/" ".recently-used" "Pictures/" ".steampid" "School/" ".lesshst" "./" ".emacs.d/" ".wget-hsts" ".bash_aliases" ".thunderbird/" ".oracle_jre_usage/" "Desktop/" ".thnuclnt/" ".octave_hist" ".dmrc" ".config/" "Documents/" ".bash_aliases~" ".irssi/" ".Xauthority" "HIKEY/" ".dmenu_cache" "Research/" "Books/")
+
+ ("/home/taha/School/spring2018/FoundationsOfComputerScience/DFA/" (23173 1331 47970 575000) "../" "State.hpp~" "linkedList/" "DFA.hpp~" "State.hpp" "DFA.cpp~" "Main.cpp" "DFA.hpp" "./" "State.cpp" "DFA.cpp" "State.cpp~")
+
+ ("/home/taha/School/spring2018/CompIV/PS2/ps2b/" (23172 31849 910927 539000) "../" "tux.png" "taha-ps2a.tar.gz" ".#PhotoMagic.cpp" "ps2a-readme.txt" "LFSR.hpp" "./" "tux-out.png" "PhotoMagic.cpp" "PhotoMagic.cpp~" "LFSR.cpp" "Makefile")
+
+ ("/etc/" (23164 42175 698375 550000) "i3status.conf" "rc5.d/" "usb_modeswitch.conf" "opt/" "fuse.conf" "pcmcia/" "rsyslog.conf" "debconf.conf" "cryptsetup-initramfs/" "gshadow-" "rc0.d/" "udev/" "mime.types" "X11/" "ssl/" "gtk-2.0/" "debian_version" "apt/" "sgml/" "staff-group-for-usr-local" "newt/" "lvm/" "kernel-img.conf" "udisks2/" "NetworkManager/" "python3.5/" "rsyslog.d/" "crypttab" "emacs25/" "rc6.d/" "calendar/" "hosts" "ufw/" "gimp/" "rc1.d/" "motd" "host.conf" "skel/" "timidity/" "rc2.d/" "ghostscript/" "binfmt.d/" "localtime" "ppp/" "papersize" "protocols" "init.d/" "drirc" "thunderbird/" "dictionaries-common/" "dhcp/" "mke2fs.conf" "console-setup/" "cron.weekly/" "magic" "security/" "python/" "machine-id" "groff/" "ca-certificates.conf" "libreoffice/" "discover.conf.d/" "rc3.d/" "chatscripts/" "gss/" "terminfo/" "bluetooth/" "ld.so.conf" "adduser.conf" "neofetch/" "bash_completion.d/" "ucf.conf" "gai.conf" "python3.6/" "rpc" "ld.so.conf.d/" "timezone" "nanorc" "ldap/" "default/" "wgetrc" "shadow" "texmf/" "bindresvport.blacklist" "firebird/" "ld.so.cache" "java-8-openjdk/" "anacrontab" "xml/" "openal/" "apparmor/" "lightdm/" "java/" "libibverbs.d/" "ifplugd/" "python3/" "networks" "libblockdev/" "fonts/" "odbcinst.ini" "locale.gen" "logrotate.conf" "UPower/" "libnl-3/" "passwd" "gufw/" "mailcap" "passwd-" "manpath.config" "xdg/" "vdpau_wrapper.cfg" "ca-certificates/" "geoclue/" "sudoers.d/" "subuid" "cron.monthly/" "python2.7/" "initramfs-tools/" "apm/" "emacs/" "ImageMagick-6/" "crontab" "profile.d/" "logcheck/" "modules-load.d/" "perl/" "hosts.allow" "icedtea-web/" "selinux/" "grub.d/" "subuid-" "update-motd.d/" "nsswitch.conf" "firefox-esr/" "mysql/" "avahi/" "sudoers" "bash.bashrc" "cron.daily/" "ODBCDataSources/" "rc4.d/" "sensors3.conf" "shadow-" "profile" "wildmidi/" "login.defs" "sysctl.conf" "locale.alias" "securetty" "discover-modprobe.conf" "deluser.conf" "rcS.d/" ".pwd.lock" "iproute2/" "dkms/" "gtk-3.0/" "fstab" "group" "adjtime" "network/" "i3/" "pulse/" "tmpfiles.d/" "pam.conf" "vim/" "irssi.conf" "os-release" "gshadow" "kernel/" "logrotate.d/" "alternatives/" "libaudit.conf" "hostname" "dpkg/" "hdparm.conf" "odbc.ini" "magic.mime" "libpaper.d/" "bash_completion" "services" "modules" "pam.d/" "apparmor.d/" "environment" "modprobe.d/" "hosts.deny" "systemd/" "subgid" "sysctl.d/" "ca-certificates.conf.dpkg-old" "glvnd/" "subgid-" "issue" "openmpi/" "inputrc" "wpa_supplicant/" "sensors.d/" "polkit-1/" "cron.d/" "gconf/" ".java/" "group-" "resolvconf/" "ssh/" "usb_modeswitch.d/" "mtab" "init/" "shells" "issue.net" "cron.hourly/" "dbus-1/" "rmt" "resolv.conf" "reportbug.conf" "mailcap.order" "../" "./")
+
+ ("/home/taha/.config/i3/" (23163 58313 133419 232000) "../" "touchpad.sh" "./" "config" "config~")
+
+ ("/home/taha/.config/" (23163 58071 293610 767000) "htop/" "../" "Slack/" "VirtualBox/" "libreoffice/" "neofetch/" "dconf/" "./" "Atom/" "texstudio/" "spotify/" "terminator/" "gtk-3.0/" "i3/" "pulse/")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
