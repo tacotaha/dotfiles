@@ -199,6 +199,17 @@
 ("C-c `"  . wrap-with-back-quotes)
 ))
 
+;; Set shell-mode to bash shell
+(setq explicit-shell-file-name "/bin/bash")
+
+;; Set the command prompt read-only
+(setq comint-prompt-read-only t)
+
+;; Use up/down keys to traverse shell command history
+(progn(require 'comint)
+(define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
+(define-key comint-mode-map (kbd "<down>") 'comint-next-input))
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;;(load-theme 'atom-one-dark t)
 ;;(load-theme 'word-perfect t t)
