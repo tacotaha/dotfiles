@@ -1,5 +1,5 @@
 Description='Eduroam'
-Interface=NAME OF INTERFACE SHOULD BE SOMETHING LIKE wlp..
+Interface=wlp4s0
 Connection=wireless
 ESSID=eduroam
 IP=dhcp
