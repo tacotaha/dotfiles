@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/local/sbin:/usr/local/bin:/home/taha/.local/bin:/home/taha/.local/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/taha/.oh-my-zsh
@@ -87,19 +87,46 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 alias zsh="source ~/.zshrc"
-alias zshconfig="emacs -nw ~/.zshrc"
-alias ohmyzsh="emacs -nw ~/.oh-my-zsh"
-alias em=emacs -nw
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
 
-# Open a file with its default Application
-function _open_ ()
+# Open a file with its default application
+function open()
 for FILE in "$@"
 do
     xdg-open $FILE &> /dev/null 2>&1 &
 done
-alias open="_open_"
+
+# Auto-format C source code
+function clean()
+for FILE in "$@"
+do
+    indent -br -brf -brs -cdw -ce -npsl -v $FILE
+done
+
+# C++11 support 
 alias g11="g++ --std=c++11"
+
+# Auto-login to freenode
 alias irssi="irssi -c chat.freenode.net -n USER -w PASS"
-alias rpc="find . | grep -E '(__pycache__|\.pyc|\.pyo$)' | xargs rm -rf"
+
+# Recursively delete annoying .pyc and __pycache__ files
+alias rpc="find ./ | grep -E '(__pycache__|\.pyc|\.pyo$)' | xargs rm -rf"
+
+# Recursively delete tilde backup files
+alias rbu="find ./ -name '*~' -exec rm '{}' \; -print -or -name '.*~' -exec rm {} \; -print"
+
+# GUI-less emacs
 alias em="emacs -nw"
-export PYTHONPATH="$PYTHONPATH:/home/taha/Research/Cortix"
+
+export PYTHONPATH=$PYTHONPATH:/home/taha/Research/Cortix
+export PATH=$PATH:/home/taha/.local/bin
+
+# Edit pkg builds in VIM
+export VISUAL=vim
+
+# Update repo mirrors
+alias update_mirrors="sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak; sudo reflector --verbose --country 'United States' -l 5 --sort rate --save /etc/pacman.d/mirrorlist"
+
+# Automatically list the contents of a directory upon changing into it
+chpwd() ls
