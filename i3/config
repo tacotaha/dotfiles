@@ -15,6 +15,10 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:monospace 12
 
+# Disable title bar
+new_window 1pixel
+for_window [class="^.*"] border pixel 1
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -89,14 +93,10 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
-
-set $workspace2 "2: Init"
-
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace $workspace2
+bindsym $mod+0 workspace 0
+bindsym $mod+1 workspace 1 
+bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
@@ -104,12 +104,12 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
 
 
 # move focused container to workspace
+bindsym $mod+Shift+0 move container to workspace 0 
 bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
@@ -117,11 +117,10 @@ bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
 
 
-assign [class="Thunderbird"] $workspace2
-assign [class="Slack"] $workspace2
+assign [class="Thunderbird"] 0
+assign [class="Slack"] 0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -133,7 +132,6 @@ bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'You pressed the exit shortcut
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-
         # Pressing left will shrink the window’s width.
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
@@ -159,19 +157,20 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar{
-status_command i3status
+status_command py3status -c /home/taha/.config/i3/i3status.conf
 }
 
-bindsym $mod+shift+x exec i3lock -i /home/taha/Pictures/cmatrix.png && pm-suspend 
-
+bindsym $mod+shift+x exec betterlockscreen -l
 
 # Startup apps
 exec thunderbird
 exec slack
 exec redshift -l 42.24:-71.07 -t 5700:3600 -g 0.8 -m randr -v
-exec_always feh --bg-scale /home/taha/Pictures/teal.jpg
+#exec_always feh --bg-scale /home/taha/Pictures/teal.jpg
+exec_always betterlockscreen -w
 exec –no-startup-id sleep 3 && xfce4-power-manager
-#compton transparency
+
+# compton transparency
 exec_always --no-startup-id compton
 exec_always --no-startup-id nm-applet
 
@@ -184,25 +183,16 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
-# Touchpad controls
-bindsym XF86TouchpadToggle exec touchpad.sh # toggle touchpad
-
-# Print Screen commands
-#Print screen focused view
+# Print screen focused view
 bindsym Print exec scrot -u /home/taha/Pictures/Screenshots/%Y%m%d_%H%M%S.png 
-
 # Print screen entire view
 bindsym $mod+Print exec scrot /home/taha/Pictures/Screenshots/%Y%m%d_%Ho%M%S.png
-
 # Print region of the screen
 bindsym $mod+Shift+Print exec scrot -s /home/taha/Pictures/Screenshots/%Y%m%d_%Ho%M%S.png
 
-# Low Battery status notifier
-exec --no-startup-id i3-battery-popup
-
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id  /home/taha/.config/i3/i3exit  lock, mode "default"
+    bindsym l exec --no-startup-id /home/taha/.config/i3/i3exit lock
     bindsym e exec --no-startup-id /home/taha/.config/i3/i3exit logout, mode "default"
     bindsym s exec --no-startup-id  /home/taha/.config/i3/i3exit suspend, mode "default"
     bindsym h exec --no-startup-id /home/taha/.config/i3/i3exit hibernate, mode "default"
@@ -215,6 +205,5 @@ mode "$mode_system" {
 }
 bindsym $mod+Delete mode "$mode_system"
 
-exec --no-startup-id "stterm -f 'Liberation Mono:size=15'"
-for_window [class="stterm"] move scratchpad, move position 0 0, resize set 1920 500;
-bindsym $mod+t [class="stterm"] scratchpad show;
+# Tap to click
+exec xinput set-prop 12 292 1

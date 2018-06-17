@@ -1,11 +1,11 @@
 #!/bin/sh
 lock() {
-    i3lock -i /home/taha/Pictures/cmatrix.png
+    betterlockscreen -l
 }
 
 case "$1" in
     "lock")
-	lock
+    lock 
 	;;
     "logout")
 	i3-msg exit
