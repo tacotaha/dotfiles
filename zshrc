@@ -97,11 +97,12 @@ do
     xdg-open $FILE &> /dev/null 2>&1 &
 done
 
-# Auto-format C source code
+# Auto-format C/C++ source code according to evil Google's standards
 function clean()
 for FILE in "$@"
 do
-    indent -br -brf -brs -cdw -ce -npsl -v $FILE
+    cp $FILE "$FILE~"
+    clang-format -i -style=google $FILE
 done
 
 # C++11 support 
