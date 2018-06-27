@@ -3,6 +3,10 @@ set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 
+" enable spell check
+set spell spelllang=en_us
+set spellfile=~/.vim/spell/en.utf-8.add
+
 " use indentation of previous line
 set autoindent
 
