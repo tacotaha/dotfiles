@@ -97,13 +97,41 @@ do
     xdg-open $FILE &> /dev/null 2>&1 &
 done
 
-# Auto-format C/C++ source code according to evil Google's standards
-function clean()
+# Auto-format C source code
+function clean-c()
 for FILE in "$@"
 do
     cp $FILE "$FILE~"
     clang-format -i -style=google $FILE
 done
+
+# Auto-format html
+function clean-html()
+for FILE in "$@"
+do
+    cp $FILE "$FILE~"
+    tidy -i -m -w 80 -ashtml -utf8 --tidy-mark no $FILE 
+done
+
+# Search and replace text
+# Usage: $ change foo bar *.c
+function change () {
+        from=$1 
+        shift
+        to=$1 
+        shift
+        for file in $*
+        do
+                perl -i.bak -p -e "s{$from}{$to}g;" $file
+                echo "Changing $from to $to in $file"
+        done
+}
+
+# View the memory usage of a process
+# Usage: $ mem firefox
+function mem(){
+    ps -eo rss,pid,euser,args:100 --sort %mem | grep -v grep | grep -i $@ | awk '{printf $1/1024 "MB"; $1=""; print }'
+}
 
 # C++11 support 
 alias g11="g++ --std=c++11"

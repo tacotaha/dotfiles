@@ -4,8 +4,8 @@ set fenc=utf-8
 set termencoding=utf-8
 
 " enable spell check
-set spell spelllang=en_us
-set spellfile=~/.vim/spell/en.utf-8.add
+"set spell spelllang=en_us
+"set spellfile=~/.vim/spell/en.utf-8.add
 
 " use indentation of previous line
 set autoindent
@@ -91,5 +91,22 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_guards()
 
 " tell ycm how to compile c/c++ source code by default
 let g:ycm_global_ycm_extra_conf = "/home/taha/.vim/.ycm_extra_conf.py"
-
 let &path.="/usr/include/,/usr/local/include"
+
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+      project_base_dir = os.environ['VIRTUAL_ENV']
+      activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+      execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+
+" Always show statusline
+set laststatus=2
+
+" Use 256 colors 
+set t_Co=256
