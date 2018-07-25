@@ -1,0 +1,2 @@
+5 * * * * offlineimap -o -q -u Noninteractive.Basic
+* 1 * * * offlineimap -o -u Noninteractive.Basic

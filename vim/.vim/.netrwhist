@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/taha'
+let g:netrw_dirhist_2='/home/taha/.cache'
+let g:netrw_dirhist_3='/home/taha'
+let g:netrw_dirhist_4='/home/taha/Code/Poker'
+let g:netrw_dirhist_5='/home/taha/Code/search/crawler/output'
+let g:netrw_dirhist_6='/home/taha/.vim'
+let g:netrw_dirhist_7='/home/taha/.vim/colors'

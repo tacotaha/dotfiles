@@ -3,6 +3,10 @@ set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 
+" enable spell check
+"set spell spelllang=en_us
+"set spellfile=~/.vim/spell/en.utf-8.add
+
 " use indentation of previous line
 set autoindent
 
@@ -102,3 +106,9 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+
+" Always show statusline
+set laststatus=2
+
+" Use 256 colors 
+set t_Co=256
