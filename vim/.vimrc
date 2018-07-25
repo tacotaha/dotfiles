@@ -43,6 +43,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
@@ -50,6 +51,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'DoxygenToolkit.vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 call vundle#end()
 filetype plugin indent on
 "==================END Vundle Plugins=============
@@ -67,7 +70,6 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration
 
 let python_highlight_all=1
-syntax on
 
 " C filetype detection
 augroup project
@@ -87,5 +89,16 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_guards()
 
 " tell ycm how to compile c/c++ source code by default
 let g:ycm_global_ycm_extra_conf = "/home/taha/.vim/.ycm_extra_conf.py"
-
 let &path.="/usr/include/,/usr/local/include"
+
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+      project_base_dir = os.environ['VIRTUAL_ENV']
+      activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+      execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
