@@ -1,40 +1,18 @@
-[?25l[?7l[0m[36m[1m                   -`
-                  .o+`
-                 `ooo/
-                `+oooo:
-               `+oooooo:
-               -+oooooo+:
-             `/:-:++oooo+:
-            `/++++/+++++++:
-           `/++++++++++++++:
-          `/+++o[0m[36m[1moooooooo[0m[36m[1moooo/`
-[0m[36m[1m         [0m[36m[1m./[0m[36m[1mooosssso++osssssso[0m[36m[1m+`
-[0m[36m[1m        .oossssso-````/ossssss+`
-       -osssssso.      :ssssssso.
-      :osssssss/        osssso+++.
-     /ossssssss/        +ssssooo/-
-   `/ossssso+/:-        -:/+osssso+-
-  `+sso+:-`                 `.-/+oso:
- `++:.                           `-/+/
- .`                                 `/
-[19A[9999999D[41C[0m[1m[36m[1mtaha[0m@[36m[1march[0m 
-[41C[0m---------[0m 
-[41C[0m[36m[1mOS[0m[0m:[0m Arch Linux x86_64[0m 
-[41C[0m[36m[1mHost[0m[0m:[0m 20HRCTO1WW ThinkPad X1 Carbon 5th[0m 
-[41C[0m[36m[1mKernel[0m[0m:[0m 4.14.56-1-lts[0m 
-[41C[0m[36m[1mUptime[0m[0m:[0m 2 hours, 52 mins[0m 
-[41C[0m[36m[1mPackages[0m[0m:[0m 919 (pacman)[0m 
-[41C[0m[36m[1mShell[0m[0m:[0m zsh 5.5.1[0m 
-[41C[0m[36m[1mResolution[0m[0m:[0m 1920x1080, 2560x1080[0m 
-[41C[0m[36m[1mWM[0m[0m:[0m i3[0m 
-[41C[0m[36m[1mTheme[0m[0m:[0m Adwaita [GTK2/3][0m 
-[41C[0m[36m[1mIcons[0m[0m:[0m Adwaita [GTK2/3][0m 
-[41C[0m[36m[1mTerminal[0m[0m:[0m urxvt[0m 
-[41C[0m[36m[1mTerminal Font[0m[0m:[0m tamzenforpowerline[0m 
-[41C[0m[36m[1mCPU[0m[0m:[0m Intel i7-7600U (4) @ 3.900GHz[0m 
-[41C[0m[36m[1mGPU[0m[0m:[0m Intel HD Graphics 620[0m 
-[41C[0m[36m[1mMemory[0m[0m:[0m 3003MiB / 15556MiB[0m 
+taha@arch 
+--------- 
+OS: Arch Linux x86_64 
+Host: 20HRCTO1WW ThinkPad X1 Carbon 5th 
+Kernel: 4.14.56-1-lts 
+Uptime: 3 hours, 4 mins 
+Packages: 919 (pacman) 
+Shell: zsh 5.5.1 
+Resolution: 1920x1080, 2560x1080 
+WM: i3 
+Theme: Adwaita [GTK2/3] 
+Icons: Adwaita [GTK2/3] 
+Terminal: urxvt 
+Terminal Font: tamzenforpowerline 
+CPU: Intel i7-7600U (4) @ 3.900GHz 
+GPU: Intel HD Graphics 620 
+Memory: 3392MiB / 15556MiB 
 
-[41C[30m[40m   [31m[41m   [32m[42m   [33m[43m   [34m[44m   [35m[45m   [36m[46m   [37m[47m   [0m
-
-[?25h[?7h
