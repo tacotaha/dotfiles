@@ -1,4 +1,5 @@
-export PATH=/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/local/sbin:/usr/local/bin:/home/taha/.local/bin:/home/taha/.local/bin
+export PATH=/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/local/sbin:/usr/local/bin:/home/taha/.local/bin
+export PYTHONPATH=$PYTHONPATH:/home/taha/Research/Cortix
 export ZSH=/home/taha/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 ENABLE_CORRECTION="true"
@@ -29,6 +30,13 @@ for FILE in "$@"
 do
     cp $FILE "$FILE~"
     tidy -i -m -w 80 -ashtml -utf8 --tidy-mark no $FILE 
+done
+
+# Create a backup of a set of files
+function backup()
+for FILE in "$@"
+do
+    cp $FILE "$FILE~"
 done
 
 # Search and replace text
@@ -66,17 +74,11 @@ alias rbu="find ./ -name '*~' -exec rm '{}' \; -print -or -name '.*~' -exec rm {
 # GUI-less emacs
 alias em="emacs -nw"
 
-export PYTHONPATH=$PYTHONPATH:/home/taha/Research/Cortix
-export PATH=$PATH:/home/taha/.local/bin
-
 # Edit pkg builds in VIM
 export VISUAL=vim
 
 # Update repo mirrors
 alias update_mirrors="sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak; sudo reflector --verbose --country 'United States' -l 5 --sort rate --save /etc/pacman.d/mirrorlist"
-
-# Automatically list the contents of a directory upon changing into it
-chpwd() ls
 
 # Browser info for viewing evil HTML email in mutt
 export BROWSER=firefox
@@ -85,8 +87,23 @@ export BROWSERCLI=w3m
 # Set theme
 wal -i /home/taha/Pictures/bit-rain.png > /dev/null
 
-# Purge annoying beep sound
-xset b off 
-
 # Stop latex compilation on an error
 alias pdflatex="pdflatex -halt-on-error"
+
+# Create a markdown file with a given name 
+# Timestamp is used if no name is provied
+# Usage: $ note <some_title>
+function note(){
+    date=$(date +%F@%T)
+    if [ $# -eq 0 ]; then 
+        fname=$date.md
+        title=""
+    else
+        fname=$1.md
+        title=$1
+    fi
+    header="---\nAuthor: Taha Azzaoui\nDate: $date\nTitle: $title\n---\n" 
+    echo -e $header > $fname
+    vim $fname
+}
+
