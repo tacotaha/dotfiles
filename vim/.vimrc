@@ -23,6 +23,7 @@ set expandtab        " expand tabs to spaces
 " turn syntax highlighting on
 set t_Co=256
 syntax on
+colorscheme elflord
 
 " kill backwards compatability
 set nocompatible
