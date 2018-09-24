@@ -79,6 +79,7 @@ static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0",
 static const char *brightup[] = {"xbacklight", "-inc", "10", NULL};
 static const char *brightdown[] = {"xbacklight", "-dec", "10", NULL};
 static const char *firefox[] = {"firefox", NULL};
+static const char *slockcmd[] = {"slock", NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
@@ -114,6 +115,7 @@ static Key keys[] = {
     {0, XF86XK_MonBrightnessUp, spawn, {.v = brightup}},
     {0, XF86XK_MonBrightnessDown, spawn, {.v = brightdown}},
     {MODKEY, XK_f, spawn, {.v = firefox}},
+    {MODKEY | ShiftMask, XK_x, spawn, {.v = slockcmd}},
 };
 
 /* button definitions */
