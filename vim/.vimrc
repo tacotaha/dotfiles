@@ -49,16 +49,7 @@ let g:DoxygenToolkit_authorName="Taha Azzaoui <tazzaoui@cs.uml.edu>"
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Bundle 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
-"Plugin 'nvie/vim-flake8'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'DoxygenToolkit.vim'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-notes'
 Plugin 'lervag/vimtex'
 call vundle#end()
 filetype plugin indent on
@@ -76,7 +67,9 @@ let g:ycm_autoclose_preview_window_after_completion=1
 "defines a shortcut for goto definition.
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration
 
+" Python syntax checking
 let python_highlight_all=1
+let g:syntastic_python_checkers = ['python']
 
 " C filetype detection
 augroup project
@@ -117,3 +110,7 @@ nnoremap <leader>9 9gt
 nnoremap <leader>w gt
 nnoremap <leader>W gT
 " }}
+
+" Maintain undo history between sessions
+set undofile 
+set undodir=~/.vim/undo.d

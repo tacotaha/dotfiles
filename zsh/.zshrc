@@ -1,5 +1,4 @@
 export PATH=/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/local/sbin:/usr/local/bin:/home/taha/.local/bin
-export PYTHONPATH=$PYTHONPATH:/home/taha/Research/Cortix
 export ZSH=/home/taha/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 ENABLE_CORRECTION="true"
@@ -32,7 +31,7 @@ do
     tidy -i -m -w 80 -ashtml -utf8 --tidy-mark no $FILE 
 done
 
-# Create a backup of a set of files
+# Create a backup of files in current directory
 function backup()
 for FILE in "$@"
 do
@@ -63,16 +62,25 @@ function mem(){
 alias g11="g++ --std=c++11"
 
 # Auto-login to freenode
-alias irssi="irssi -c chat.freenode.net -n USER -w PASS && echo '' > $HISTFILE"
+function irssi_login () {
+    echo -n Password: 
+    read -s password
+    echo
+    irssi -c chat.freenode.net -n karl_gau55 -w $password && echo '' > $HISTFILE
+}
 
 # Recursively delete annoying .pyc and __pycache__ files
 alias rpc="find ./ | grep -E '(__pycache__|\.pyc|\.pyo$)' | xargs rm -rf"
 
 # Recursively delete tilde backup files
 alias rbu="find ./ -name '*~' -exec rm '{}' \; -print -or -name '.*~' -exec rm {} \; -print"
+alias rbk="find ./ -name '*.bak' -exec rm '{}' \; -print -or -name '*.bak' -exec rm {} \; -print"
 
 # GUI-less emacs
 alias em="emacs -nw"
+
+# Tell Python where Cortix is
+#export PYTHONPATH=/home/taha/Research/Cortix:/home/taha/Code/Search/search
 
 # Edit pkg builds in VIM
 export VISUAL=vim
@@ -83,9 +91,6 @@ alias update_mirrors="sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.
 # Browser info for viewing evil HTML email in mutt
 export BROWSER=firefox
 export BROWSERCLI=w3m
-
-# Set theme
-wal -i /home/taha/Pictures/bit-rain.png > /dev/null
 
 # Stop latex compilation on an error
 alias pdflatex="pdflatex -halt-on-error"
@@ -107,3 +112,24 @@ function note(){
     vim $fname
 }
 
+# Recursively search downwards for a file containing a specified string
+# Usage: seach <path> pattern
+function search(){ 
+    if [ $# -eq 1 ]; then
+        DIR="."
+        PAT=$1
+    elif [$# -eq 2]; then
+        DIR=$1
+        PAT=$2
+    fi
+    echo "Searching for $PAT in $DIR ..."
+    grep -rnw $DIR -e $PAT
+}
+
+export PYTHONPATH=/home/taha/Research/cortix/cortix
+
+# Record audio and save it to a wav
+alias record="sox -t alsa default $(date +%F@%T.wav)"
+
+# Set the shell theme
+#wal -i /home/taha/Pictures/space-RGB-01.png
