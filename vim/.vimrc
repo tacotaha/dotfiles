@@ -41,9 +41,6 @@ set showmatch
 " intelligent comments
 set comments=sl:/*,mb:\ *,elx:\ */
 
-" DoxygenToolkit (http://www.vim.org/scripts/script.php?script_id=987)
-let g:DoxygenToolkit_authorName="Taha Azzaoui <tazzaoui@cs.uml.edu>"
-
 "=================BEGIN Vundle Plugins=============
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -51,6 +48,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'lervag/vimtex'
+Plugin 'vim-todo-lists'
 call vundle#end()
 filetype plugin indent on
 "==================END Vundle Plugins=============
@@ -61,11 +59,8 @@ nnoremap <C-K> <C-W><C-K> # Move to split above
 nnoremap <C-L> <C-W><C-L> # Move to split right
 nnoremap <C-H> <C-W><C-H> # Move to split left
 
-"ensures that the auto-complete window goes away when you’re done
-let g:ycm_autoclose_preview_window_after_completion=1
-
-"defines a shortcut for goto definition.
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration
+" Don't move items after completion
+let g:VimTodoListsMoveItems = 0
 
 " Python syntax checking
 let python_highlight_all=1
