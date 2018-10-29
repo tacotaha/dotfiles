@@ -1,0 +1,20 @@
+xrdb -merge ~/.Xresources
+xset b off
+xset +fp /usr/share/fonts/local &
+xset fp rehash &
+exec compton & 
+#exec ~/.config/scripts/dwm_status.sh &
+#exec ~/.config/scripts/lock_screen_on_close.sh &
+exec slstatus 2>&1 >/dev/null &
+exec ~/.config/scripts/low_battery_notify.sh &
+exec feh --bg-fill ~/Pictures/network.png &
+exec redshift -l 42.24:-71.07 -t 5700:3600 -g 0.8 -m randr -v &
+exec nextcloud &
+exec source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh &
+exec Desktop-Bridge --no-window &
+exec st -e slack-term&
+exec st -e mutt& 
+dbus-update-activation-environment --systemd DISPLAY
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+exec dwm 
