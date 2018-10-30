@@ -1,3 +1,4 @@
+export PATH=/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/local/sbin:/usr/local/bin:/home/taha/.local/bin
 export ZSH=/home/taha/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 ENABLE_CORRECTION="true"
@@ -88,7 +89,7 @@ export VISUAL=vim
 alias update_mirrors="sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak; sudo reflector --verbose --country 'United States' -l 5 --sort rate --save /etc/pacman.d/mirrorlist"
 
 # Browser info for viewing evil HTML email in mutt
-export BROWSER=firefox
+export BROWSER=qutebrowser
 export BROWSERCLI=w3m
 
 # Stop latex compilation on an error
@@ -133,10 +134,19 @@ alias record="sox -t alsa default $(date +%F@%T.wav)"
 # Set the shell theme
 #wal -i /home/taha/Pictures/space-RGB-01.png
 
+# Volume commands
 alias vd="pactl set-sink-volume 0 -5%"   # -5% (down)
 alias vu="pactl set-sink-volume 0 +5%"   # -5% (down)
 alias vm="pactl set-sink-mute 0 toggle"  # toggle mute
+
+# HDMI output
+alias hdmi-only="xrandr --output eDP1 --off  --output HDMI1 --mode 2560x1080 --output HDMI1 --mode 1280x720 --output HDMI1 --mode 2560x1080"
+alias hdmi-off="xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --off"
+alias hdmi-right="xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --mode 2560x1080 --right-of eDP1"
+alias hdmi-left="xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --mode 2560x1080 --left-of eDP1"
+alias hdmi-above="xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --mode 2560x1080 --above eDP1"
+alias hdmi-below="xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --mode 2560x1080 --below eDP1"
+
 export SCHOOL="/home/taha/School/Coursework/fall2018"
 
 alias vi="vim"
-export PATH=/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/local/sbin:/usr/local/bin:/home/taha/.local/bin
