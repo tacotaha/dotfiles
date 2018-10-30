@@ -1,0 +1,50 @@
+[general]
+accounts = taha_azzaoui@student.uml.edu, taha@tahaazzaoui.com
+pythonfile = ~/.offlineimap.py
+autorefresh = 5
+maxsyncaccounts = 6
+singlethreadperfolder = True
+
+[Account taha_azzaoui@student.uml.edu]
+type = Maildir
+localfolders = ~/Mail/taha_azzaoui@student.uml.edu
+localrepository = taha_azzaoui@student.uml.edu-Local
+remoterepository = taha_azzaoui@student.uml.edu-Remote
+postsynchook = /usr/bin/offlineimap-notify-taha_azzaoui@student.uml.edu.sh
+
+[Repository taha_azzaoui@student.uml.edu-Local]
+type = Maildir
+localfolders = ~/Mail/taha_azzaoui@student.uml.edu
+
+[Repository taha_azzaoui@student.uml.edu-Remote]
+type = IMAP
+remoteuser = Taha_Azzaoui@student.uml.edu
+remotepasseval = mailpasswd("taha_azzaoui@student.uml.edu")
+remotehost = outlook.office365.com
+remoteport = 993
+realdelete = no
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+folderfilter = lambda folder: folder in ['INBOX', 'Sent', 'Drafts', 'Sent Items', 'Junk E-Mail']
+
+[Account taha@tahaazzaoui.com]
+localfolders = ~/Mail/taha@tahaazzaoui.com
+localrepository = taha@tahaazzaoui.com-Local
+remoterepository = taha@tahaazzaoui.com-Remote
+
+[Repository taha@tahaazzaoui.com-Local]
+type = Maildir
+localfolders = ~/Mail/taha@tahaazzaoui.com
+sync_deletes = yes
+
+[Repository taha@tahaazzaoui.com-Remote]
+type = IMAP
+remoteport = 1143
+remotehost = 127.0.0.1
+remoteuser = taha@tahaazzaoui.com 
+remotepasseval = mailpasswd("taha@tahaazzaoui.com-onetime")
+keepalive = 60
+holdconnectionopen = yes
+expunge = yes
+ssl = no
+folderfilter = lambda foldername: foldername in ['INBOX', 'Drafts', 'Sent', 'Trash']
