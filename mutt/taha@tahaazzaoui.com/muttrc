@@ -1,19 +1,19 @@
 color status green default
 
 set realname = "Taha Azzaoui"
-set from     = "Taha.Azzaoui@protonmail.com"
-set sendmail = "/usr/bin/msmtp -a taha.azzaoui@protonmail.com"
+set from     = "taha@tahaazzaoui.com"
+set sendmail = "/usr/bin/msmtp -a taha@tahaazzaoui.com"
 set mbox     = "+INBOX"
 
 set mbox_type=Maildir
-set folder=~/Mail/taha.azzaoui@protonmail.com
+set folder=~/Mail/taha@tahaazzaoui.com
 set record=+Sent
 set postponed=+Drafts
 set trash=+Trash
 set mail_check=2 # seconds
 
 # smtp
-source "gpg -d ~/.mutt/taha.azzaoui@protonmail.com/auth.gpg |"
+source "gpg -d ~/.mutt/taha@tahaazzaoui.com/auth.gpg |"
 set smtp_url=smtp://$my_user:$my_pass@127.0.0.1:1025
 set ssl_force_tls
 set ssl_starttls
@@ -23,6 +23,6 @@ mailboxes +INBOX \
           +Trash\
           +Archive
 
-set header_cache = ~/.mutt/taha.azzaoui@protonmail.com/cache/headers
-set message_cachedir=~/.mutt/taha.azzaoui@protonmail.com/cache/bodies
+set header_cache = ~/.mutt/taha@tahaazzaoui.com/cache/headers
+set message_cachedir=~/.mutt/taha@tahaazzaoui.com/cache/bodies
 set spoolfile = "+INBOX"

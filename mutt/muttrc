@@ -1,0 +1,106 @@
+# Paths {{{
+set folder           = ~/Mail                           # mailbox location
+set alias_file       = ~/.mutt/alias                    # where to store aliases
+set header_cache     = ~/.mutt/cache/headers            # where to store headers
+set message_cachedir = ~/.mutt/cache/bodies             # where to store bodies (lol)
+set certificate_file = ~/.mutt/certificates             # where to store certs
+set mailcap_path     = ~/.mailcap                       # entries for filetypes
+set signature        = ~/.mutt/sig                      # my signature file
+
+# }}}
+
+# Account Settings {{{
+
+set spoolfile = "+taha_azzaoui@student.uml.edu/INBOX"
+source ~/.mutt/taha_azzaoui@student.uml.edu/.muttrc
+source ~/.mutt/alias
+folder-hook taha@tahaazzaoui.com/* source ~/.mutt/taha@tahaazzaoui.com/.muttrc
+folder-hook taha_azzaoui@student.uml.edu/* source ~/.mutt/taha_azzaoui@student.uml.edu/.muttrc
+macro index <f1> '<sync-mailbox><enter-command>source ~/.mutt/taha@tahaazzaoui.com/.muttrc<enter><change-folder>!<enter>'
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/taha_azzaoui@student.uml.edu/.muttrc<enter><change-folder>!<enter>'
+
+# }}}
+
+# General Options {{{
+set editor          = vim                               # use vim to compose mail
+set charset         = "utf-8"                           # character encoding
+set sleep_time      = 0                                 # be faster
+set mbox_type       = Maildir                           # mailbox type
+set timeout         = 0                                 # idle time before scanning
+set mail_check      = 0                                 # minimum time between scans
+set recall          = no                                # don't ask to recall postponed message when Composing
+set delete          = yes                               # don't ask to confirm purge deleted message on sync
+set smart_wrap      = yes                               # wrap lines at a word boundary
+set sort            = 'threads'                         # enable threads
+set sort_aux        = 'last-date-received'              # sort threads by most recent
+unset move                                              # gmail does that
+set delete                                              # don't ask, just do
+unset confirmappend                                     # don't ask, just do!
+set quit                                                # don't ask, just do !!
+unset mark_old                                          # read/new is good enough for me
+set beep_new                                            # bell on new mail
+set pipe_decode                                         # strip headers and eval mimes when piping
+set thorough_search                                     # strip headers and eval mimes before searching
+set text_flowed                                         # set flowed for easy reading on mobile
+set imap_check_subscribed                               # fetch subscribed folders when mailbox is selected
+macro index,pager S '<shell-escape>offlineimap<enter>'  
+
+auto_view text/html                                     # view html automatically
+alternative_order text/enriched text/html text/plain text
+macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview' 
+ignore *
+unignore From To Reply-To Cc Bcc Subject Date User-Agent
+set index_format = "%4C %Z %{%b %d %R} %-15.15L (%4l) %s"
+
+# }}}
+
+# Colors {{{
+#source ~/.mutt/colors/mutt-colors-neonwolf-256.muttrc
+
+# }}}
+
+# Sidebar {{{
+set sidebar_visible = no
+set sidebar_width = 30
+bind index,pager K sidebar-prev
+bind index,pager J sidebar-next
+bind index,pager \CO sidebar-open
+macro index,pager b '<enter-command>toggle sidebar_visible<enter><refresh>'
+color sidebar_new brightmagenta default
+# }}}
+
+# Navigation Bindings {{{
+bind pager <up> previous-line 
+bind pager k previous-line 
+bind pager <down> next-line
+bind pager j next-line
+bind index,pager / search
+#bind index gg first-entry
+bind index G last-entry
+#bind pager gg top
+bind pager G bottom
+
+# }}}
+
+# Atachements/Forwarding {{{
+bind attach <return> view-mailcap    # view attachments propely
+set fast_reply                       # skip to compose when replying
+set fcc_attach                       # save attachments with the body
+unset mime_forward                   # forward attachments as part of body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set forward_quote                    # include message in forwards
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+
+# }}}
+
+# Notmuch {{{
+macro index <F8> \
+          "<enter-command>unset wait_key<enter><shell-escape>/usr/bin/notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
+          "search mail (using notmuch)"
+    macro index <F9> \
+          "<enter-command>unset wait_key<enter><pipe-message>/usr/bin/notmuch-mutt thread<enter><change-folder-readonly>~/.cache/mutt_results<enter><enter-command>set wait_key<enter>" \
+          "search and reconstruct owning thread (using notmuch)"
+
+# }}}
