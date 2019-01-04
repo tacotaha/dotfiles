@@ -1,0 +1,11 @@
+[Unit]
+Description=Desktop-Bridge: Protonmail Bridge - ProtonMail IMAP and SMTP Bridge
+ 
+[Service]
+Type=simple
+ExecStart=/usr/bin/tmux new-session -d -s mail 'Desktop-Bridge --cli'
+Restart=always
+RemainAfterExit=1
+
+[Install]
+WantedBy=default.target
