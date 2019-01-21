@@ -1,0 +1,26 @@
+[General]
+# Path to the calcurse binary that is used for importing/exporting items.
+Binary = calcurse
+
+# Host name of the server that hosts CalDAV.
+Hostname = 73.123.238.167:8080/nextcloud
+
+# Path to the CalDAV calendar on the host specified above.
+Path = /remote.php/dav/calendars/taha/personal/
+
+# Can be "basic" or "oauth2"
+AuthMethod = basic
+
+# Skip SSL certificate checks.
+InsecureSSL = Yes 
+
+# "event", "apt", "recur-event", "recur-apt", "todo", "recur" or "cal". 
+SyncFilter = cal,todo
+
+DryRun = No 
+Verbose = Yes
+
+[Auth]
+Username = taha 
+# tazzaoui: GPG option requires patch
+PasswordGPG = /home/taha/.calcurse/auth.gpg
