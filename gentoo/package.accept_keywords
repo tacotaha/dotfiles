@@ -1,0 +1,5 @@
+# required by net-im/slack-bin (argument)
+=net-im/slack-bin-3.3.8 ~amd64
+
+# required by steam-launcher (argument)
+=games-util/steam-launcher-1.0.0.59-r3 ~amd64
