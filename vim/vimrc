@@ -48,7 +48,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'lervag/vimtex'
-Plugin 'vim-todo-lists'
 call vundle#end()
 filetype plugin indent on
 "==================END Vundle Plugins=============
