@@ -20,6 +20,7 @@ value=$4
 [ -d /dev/oss ] && oss=true || oss=false
 amixer="amixer -q set Master"
 ossmix="ossmix -- vmix0-outvol"
+hdmi_active="$(cat /sys/class/drm/card0/*HDMI*/status |grep '^connected')"
 
 case $group in
 	ac_adapter)
@@ -45,8 +46,10 @@ case $group in
 			lid)
 				case "$id" in
 					close) 
-                        DISPLAY=:0.0 su -c - taha /usr/bin/slock&	
-                        echo mem > /sys/power/state;;
+                        if [[ -z "$hdmi_active" ]]; then 
+                            DISPLAY=:0.0 su -c - taha /usr/bin/slock&	
+                            echo mem > /sys/power/state
+                        fi;;
 					open) :;;
 					*) uhd $*;;
 				esac
