@@ -1,18 +1,29 @@
 color status cyan default
-set folder          = "~/Mail/taha_azzaoui@student.uml.edu"
-set realname        = "Taha Azzaoui"
-set from            = "Taha_Azzaoui@student.uml.edu"
-set sendmail        = "/usr/bin/msmtp -a taha_azzaoui@student.uml.edu"
-set mbox            = "+INBOX"
-set postponed       = "+Drafts"
-set spoolfile       = "+INBOX"
-set record          = "+Sent Items"
-set trash           = "+Deleted Items"
+
+source "gpg -d ~/.mutt/taha_azzaoui@student.uml.edu/auth.gpg |"
+
+set realname = "Taha Azzaoui"
+set from = "Taha_Azzaoui@student.uml.edu"
+
+# Imap Creds
+set imap_user = "Taha_Azzaoui@student.uml.edu"
+set imap_pass = $my_pass
+
+# Specifies the default location of your mailboxes
+set folder = "~/Mail/taha_azzaoui@student.uml.edu"
+
+# Configure Simple Mail Transfer Protocol for sending mail
+set smtp_pass = $my_pass 
+set ssl_force_tls = yes
+set smtp_authenticators = "login"
+
+# Folder Location
+set spoolfile = "+INBOX"
+set postponed = "+Drafts"
+set record    = "+Sent Items"
+set trash     = "+Deleted Items"
 mailboxes +INBOX \
           +Sent \
           +'Sent Items'\
           +'Deleted Items'\
           +Drafts
-set header_cache    =~/.mutt/taha_azzaoui@student.uml.edu/cache/headers
-set message_cachedir=~/.mutt/taha_azzaoui@student.uml.edu/cache/bodies
-set certificate_file=~/.mutt/taha_azzaoui@student.uml.edu/certificates

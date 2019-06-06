@@ -1,28 +1,29 @@
-color status green default
-
-set realname = "Taha Azzaoui"
-set from     = "taha@tahaazzaoui.com"
-set sendmail = "/usr/bin/msmtp -a taha@tahaazzaoui.com"
-set mbox     = "+INBOX"
-
-set mbox_type=Maildir
-set folder=~/Mail/taha@tahaazzaoui.com
-set record=+Sent
-set postponed=+Drafts
-set trash=+Trash
-set mail_check=2 # seconds
-
-# smtp
+set from="Taha Azzaoui"
 source "gpg -d ~/.mutt/taha@tahaazzaoui.com/auth.gpg |"
-set smtp_url=smtp://$my_user:$my_pass@127.0.0.1:1025
-set ssl_force_tls
-set ssl_starttls
 
-mailboxes +INBOX \
-          +Sent \
-          +Trash\
-          +Archive
-
-set header_cache = ~/.mutt/taha@tahaazzaoui.com/cache/headers
-set message_cachedir=~/.mutt/taha@tahaazzaoui.com/cache/bodies
+# Folders
+set folder = "~/Mail/taha_azzaoui@student.uml.edu"
 set spoolfile = "+INBOX"
+set trash = "+Trash"
+set mbox = "+Received"
+set record = "+Sent"
+set postponed =" +Drafts"
+
+# Folder Options
+set postpone = yes
+set move     = no
+set copy     = no
+
+# Security
+unset imap_passive
+set ssl_starttls = yes
+set imap_authenticators = login
+
+# Refresh (Seconds)
+set mail_check   = 20
+set timeout      = 10
+
+# Sidebar
+set sidebar_visible    = yes
+set sidebar_short_path = yes
+set imap_check_subscribed = yes
