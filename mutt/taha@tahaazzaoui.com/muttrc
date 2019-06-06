@@ -2,7 +2,7 @@ set from="Taha Azzaoui"
 source "gpg -d ~/.mutt/taha@tahaazzaoui.com/auth.gpg |"
 
 # Folders
-set folder = "~/Mail/taha_azzaoui@student.uml.edu"
+set folder = "~/Mail/taha@tahaazzaoui.com"
 set spoolfile = "+INBOX"
 set trash = "+Trash"
 set mbox = "+Received"
