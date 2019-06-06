@@ -1,23 +1,21 @@
 # Paths {{{
-set folder           = ~/Mail                           # mailbox location
-set alias_file       = ~/.mutt/alias                    # where to store aliases
 set header_cache     = ~/.mutt/cache/headers            # where to store headers
 set message_cachedir = ~/.mutt/cache/bodies             # where to store bodies (lol)
 set certificate_file = ~/.mutt/certificates             # where to store certs
-set mailcap_path     = ~/.mailcap                       # entries for filetypes
 set signature        = ~/.mutt/sig                      # my signature file
+set tmpdir           = ~/.mutt/tmp                      # temp file
 
 # }}}
 
 # Account Settings {{{
 
-set spoolfile = "+taha_azzaoui@student.uml.edu/INBOX"
-source ~/.mutt/taha_azzaoui@student.uml.edu/.muttrc
-source ~/.mutt/alias
-folder-hook taha@tahaazzaoui.com/* source ~/.mutt/taha@tahaazzaoui.com/.muttrc
-folder-hook taha_azzaoui@student.uml.edu/* source ~/.mutt/taha_azzaoui@student.uml.edu/.muttrc
-macro index <f1> '<sync-mailbox><enter-command>source ~/.mutt/taha@tahaazzaoui.com/.muttrc<enter><change-folder>!<enter>'
-macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/taha_azzaoui@student.uml.edu/.muttrc<enter><change-folder>!<enter>'
+# Folder hooks
+folder-hook taha@tahaazzaoui.com/* source ~/.mutt/taha@tahaazzaoui.com/muttrc
+folder-hook taha_azzaoui@student.uml.edu/* source ~/.mutt/taha_azzaoui@student.uml.edu/muttrc
+
+# Account Macros {{{
+macro index <f1> '<sync-mailbox><enter-command>source ~/.mutt/taha@tahaazzaoui.com/muttrc<enter><change-folder>!<enter>'
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/taha_azzaoui@student.uml.edu/muttrc<enter><change-folder>!<enter>'
 
 # }}}
 
@@ -26,6 +24,7 @@ set editor          = vim                               # use vim to compose mai
 set charset         = "utf-8"                           # character encoding
 set sleep_time      = 0                                 # be faster
 set mbox_type       = Maildir                           # mailbox type
+set sendmail        = "/usr/bin/msmtp"                  # send mail with msmtp
 set timeout         = 0                                 # idle time before scanning
 set mail_check      = 0                                 # minimum time between scans
 set recall          = no                                # don't ask to recall postponed message when Composing
@@ -33,8 +32,6 @@ set delete          = yes                               # don't ask to confirm p
 set smart_wrap      = yes                               # wrap lines at a word boundary
 set sort            = 'threads'                         # enable threads
 set sort_aux        = 'last-date-received'              # sort threads by most recent
-unset move                                              # gmail does that
-set delete                                              # don't ask, just do
 unset confirmappend                                     # don't ask, just do!
 set quit                                                # don't ask, just do !!
 unset mark_old                                          # read/new is good enough for me
@@ -43,7 +40,8 @@ set pipe_decode                                         # strip headers and eval
 set thorough_search                                     # strip headers and eval mimes before searching
 set text_flowed                                         # set flowed for easy reading on mobile
 set imap_check_subscribed                               # fetch subscribed folders when mailbox is selected
-macro index,pager S '<shell-escape>offlineimap<enter>'  
+macro index S "<shell-escape>offlineimap<enter>" "run offlineimap to sync all mail"
+
 
 auto_view text/html                                     # view html automatically
 alternative_order text/enriched text/html text/plain text
@@ -54,31 +52,44 @@ set index_format = "%4C %Z %{%b %d %R} %-15.15L (%4l) %s"
 
 # }}}
 
-# Colors {{{
-#source ~/.mutt/colors/mutt-colors-neonwolf-256.muttrc
-
-# }}}
-
 # Sidebar {{{
-set sidebar_visible = no
-set sidebar_width = 30
+set sidebar_visible = yes 
+set sidebar_width =24 
 bind index,pager K sidebar-prev
 bind index,pager J sidebar-next
 bind index,pager \CO sidebar-open
 macro index,pager b '<enter-command>toggle sidebar_visible<enter><refresh>'
 color sidebar_new brightmagenta default
+
 # }}}
 
 # Navigation Bindings {{{
-bind pager <up> previous-line 
-bind pager k previous-line 
-bind pager <down> next-line
-bind pager j next-line
-bind index,pager / search
-#bind index gg first-entry
-bind index G last-entry
-#bind pager gg top
-bind pager G bottom
+# Index
+bind    index   <up>        previous-entry
+bind    index   <down>      next-entry
+bind    index   <delete>    delete-message
+bind    index   n           next-entry
+bind    index   p           previous-entry
+macro   index   Q           ":set quit=yes\nq" "Quit mutt without asking"
+bind    index   C           noop
+bind    index   -           collapse-thread
+bind    index   _           collapse-all
+bind    index   G           last-entry
+bind    index   /            search
+
+# Pager
+bind    pager   <up>        previous-line
+bind    pager   <down>      next-line
+bind    pager   <left>      previous-entry
+bind    pager   <right>     next-entry
+bind    pager   <delete>    delete-message
+bind    pager   k           previous-line
+bind    pager   j           next-line
+bind    pager   n           next-entry
+bind    pager   p           previous-entry
+bind    pager   w           previous-page
+bind    pager   G            bottom
+bind    pager   /            search
 
 # }}}
 
@@ -95,12 +106,51 @@ set include                          # include message in replies
 
 # }}}
 
-# Notmuch {{{
-macro index <F8> \
-          "<enter-command>unset wait_key<enter><shell-escape>/usr/bin/notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
-          "search mail (using notmuch)"
-    macro index <F9> \
-          "<enter-command>unset wait_key<enter><pipe-message>/usr/bin/notmuch-mutt thread<enter><change-folder-readonly>~/.cache/mutt_results<enter><enter-command>set wait_key<enter>" \
-          "search and reconstruct owning thread (using notmuch)"
+# Colors {{{
+color   normal      white default
+color   attachment  brightyellow default
+color   hdrdefault  cyan default
+color   indicator   black cyan
+color   markers     brightred default
+color   quoted      green default
+color   signature   cyan default
+color   status      brightgreen blue
+color   tilde       blue default
+color   tree        red default
+color   header      brightgreen default ^From:
+color   header      brightcyan default ^To:
+color   header      brightcyan default ^Reply-To:
+color   header      brightcyan default ^Cc:
+color   header      brightblue default ^Subject:
+color   body        brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+color   body        brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
 
+# }}}
+
+# GPG Signing {{{
+set crypt_use_gpgme = yes
+set crypt_autosign = yes
+set crypt_verify_sig = yes
+set crypt_replysign = yes
+set crypt_replyencrypt = yes
+set crypt_replysignencrypted = yes
+
+# }}}
+
+# Default Account {{{
+source ~/.mutt/taha_azzaoui@student.uml.edu/muttrc # Default account
+
+# }}}
+
+# Notifications {{{
+set new_mail_command="notify-send --icon='/home/taha/Pictures/mail_icon.png' 'New Email' '%n new messages, %u unread.' &"
+
+# }}}
+
+# Aliases {{{
+set alias_file = "/home/taha/.mutt/aliases.txt"
+set sort_alias = alias
+set reverse_alias = yes
+source $alias_file
+macro pager A |'mail2muttalias.py /home/taha/.mutt/aliases.txt'\n
 # }}}
